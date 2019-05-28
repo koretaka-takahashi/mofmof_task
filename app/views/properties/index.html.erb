@@ -1,1 +1,27 @@
-<h1>a</h1>
+<h1>物件一覧</h1>
+
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+
+  <% @properties.each do |property| %>
+  <tr>
+    <td><%= property.name %></td>
+    <td><%= number_with_delimiter(property.price) %>円</td>
+    <td><%= property.address %></td>
+    <td><%= property.age %></td>
+    <td><%= property.note %></td>
+    <td><%= link_to "詳細" %></td>
+    <td><%= link_to "編集" %></td>
+    <td><%= link_to "削除" %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "物件を登録する" %></p>
+
