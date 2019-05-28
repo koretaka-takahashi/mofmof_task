@@ -1,0 +1,18 @@
+<h1>閲覧</h1>
+
+<p>物件名:<%= @property.name %></p>
+<p>賃料:<%= number_with_delimiter(@property.price) %></p>
+<p>住所:<%= @property.address %></p>
+<p>築年数:<%= @property.age %></p>
+<p>備考:<%= @property.note %></p>
+
+<% @property.nearest_stations.each_with_index do |nearest_station, i| %>
+<h3>最寄駅<%= i + 1 %></h3>
+<p>路線名 <%= nearest_station.line %></p>
+<p>駅名 <%= nearest_station.station %></p>
+<p>徒歩分数 <%= nearest_station.walking_minutes %></p>
+<% end %>
+
+<%= link_to "編集"%>
+<div style="background-color:gray; width:1px; height:15px;"></div>
+<%= link_to "戻る"%>

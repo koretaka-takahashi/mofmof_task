@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  before_action :set_property, only:[:show, :edit, :update]
+  
   def index
     @properties = Property.all.order(created_at: "DESC")
   end
@@ -20,4 +22,10 @@ class PropertiesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def set_property
+    @property = Property.find(params[:id])
+  end  
 end
