@@ -7,6 +7,7 @@ class PropertiesController < ApplicationController
   
   def create
     @property = Property.create(property_params)
+    redirect_to root_path
   end
   
   def new
