@@ -4,24 +4,29 @@ class PropertiesController < ApplicationController
   def index
     @properties = Property.all.order(created_at: "DESC")
   end
-  
-  def create
-    @property = Property.create(property_params)
-    redirect_to root_path
-  end
-  
+
   def new
     @property = Property.new
     @property.nearest_stations.build
   end
 
-  def edit
+  def create
+    @property = Property.create(property_params)
+    redirect_to property_path(@property.id)
   end
 
   def show
   end
+    
+  def edit
+  end
 
   def update
+    if @property.update(update_property_params)
+      redirect_to property_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,7 +45,18 @@ class PropertiesController < ApplicationController
       :address, 
       :age, 
       :note,
-       nearest_stations_attributes: [:line,:station,:walking_minutes]
+       nearest_stations_attributes: [:line, :station, :walking_minutes]
+      )
+  end  
+
+  def update_property_params
+    params.require(:property).permit(
+      :name, 
+      :price, 
+      :address, 
+      :age, 
+      :note,
+       nearest_stations_attributes: [:line, :station, :walking_minutes, :id]
       )
   end  
 end
