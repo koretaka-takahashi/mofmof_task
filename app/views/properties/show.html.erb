@@ -6,8 +6,8 @@
 
 <hr>
 
-<% @property.nearest_stations.each_with_index do |nearest_station, i| %>
-<h3>最寄り駅<%= i + 1 %></h3>
+<% @property.nearest_stations.each.with_index(1) do |nearest_station, i| %>
+<h3>最寄り駅<%= i %></h3>
 <p>路線名 <%= nearest_station.line %></p>
 <p>駅名 <%= nearest_station.station %></p>
 <p>徒歩分数 <%= nearest_station.walking_minutes %></p>
