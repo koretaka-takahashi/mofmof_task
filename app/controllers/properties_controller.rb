@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only:[:show, :edit, :update]
+  before_action :set_property, only:[:show, :edit, :update, :destroy]
   
   def index
     @properties = Property.all.order(created_at: "DESC")
@@ -30,6 +30,8 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
+    @property.destroy
+    redirect_to properties_path
   end
 
   private
