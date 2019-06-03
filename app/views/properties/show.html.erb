@@ -1,24 +1,24 @@
 <div class="show-list">
-<p>物件名:<%= @property.name %></p>
-<p>賃料:<%= number_with_delimiter(@property.price) %></p>
-<p>住所:<%= @property.address %></p>
-<p>築年数:<%= @property.age %></p>
-<p>備考:<%= @property.note %></p>
+  <p>物件名:<%= @property.name %></p>
+  <p>賃料:<%= number_with_delimiter(@property.price) %></p>
+  <p>住所:<%= @property.address %></p>
+  <p>築年数:<%= @property.age %></p>
+  <p>備考:<%= @property.note %></p>
 </div>
 
 <hr>
 
 <% @property.nearest_stations.each.with_index(1) do |nearest_station, i| %>
-<h3>最寄り駅<%= i %></h3>
-<div class="show-list">
-<p>路線名 <%= nearest_station.line %></p>
-<p>駅名 <%= nearest_station.station %></p>
-<p>徒歩分数 <%= nearest_station.walking_minutes %></p>
-</div>
+  <h3>最寄り駅<%= i %></h3>
+  <div class="show-list">
+    <p>路線名 <%= nearest_station.line %></p>
+    <p>駅名 <%= nearest_station.station %></p>
+    <p>徒歩分数 <%= nearest_station.walking_minutes %></p>
+  </div>
 <% end %>
 
 <div class="links">
-<p><%= link_to "編集", edit_property_path(@property.id), style: "color: #4B474D;" %></p>
-<p class="vertical-line"></p>
-<p><%= link_to "戻る", root_path, class: 'link' %></p>
+  <p><%= link_to "編集", edit_property_path(@property.id), style: "color: #4B474D;" %></p>
+  <p class="vertical-line"></p>
+  <p><%= link_to "戻る", root_path, class: 'link' %></p>
 </div>

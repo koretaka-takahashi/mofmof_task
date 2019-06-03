@@ -18,8 +18,8 @@
   <p><%= f.text_area :note %></p>
 
   <hr>
-  <h3>最寄り駅１</h3>
 
+  <h3>最寄り駅１</h3>
   <%= f.fields_for :nearest_stations do |ns| %>
     <p><%= ns.label :路線名 %></p>
     <p><%= ns.text_field :line %></p>
@@ -29,11 +29,9 @@
 
     <p><%= ns.label :徒歩分数 %></p>
     <p><%= ns.text_field :walking_minutes %>分</p>
-  
   <% end %>
 
   <h3>最寄り駅2</h3>
-
   <%= f.fields_for :nearest_stations do |ns| %>
     <p><%= ns.label :路線名 %></p>
     <p><%= ns.text_field :line %></p>
@@ -43,9 +41,8 @@
 
     <p><%= ns.label :徒歩分数 %></p>
     <p><%= ns.text_field :walking_minutes %>分</p>
-  
   <% end %>
-<%= f.submit "登録する" %>
+  <%= f.submit "登録する" %>
 <% end %>
 
 <p><%= link_to "戻る", root_path, class: 'link' %></p>

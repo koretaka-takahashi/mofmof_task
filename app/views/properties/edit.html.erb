@@ -20,27 +20,24 @@
   <hr>
   
   <% @property.nearest_stations.each.with_index(1) do |nearest_station, i| %>
-  <%= f.fields_for :nearest_stations, nearest_station do |ns| %>
+    <%= f.fields_for :nearest_stations, nearest_station do |ns| %>
 
-    <h3>最寄り駅<%= i %></h3>
+      <h3>最寄り駅<%= i %></h3>
+      <p><%= ns.label :路線名 %></p>
+      <p><%= ns.text_field :line %></p>
 
-    <p><%= ns.label :路線名 %></p>
-    <p><%= ns.text_field :line %></p>
+      <p><%= ns.label :駅名 %></p>
+      <p><%= ns.text_field :station %></p>
 
-    <p><%= ns.label :駅名 %></p>
-    <p><%= ns.text_field :station %></p>
-
-    <p><%= ns.label :徒歩分数 %></p>
-    <p><%= ns.text_field :walking_minutes %>分</p>
-  
+      <p><%= ns.label :徒歩分数 %></p>
+      <p><%= ns.text_field :walking_minutes %>分</p>
+    <% end %>
   <% end %>
-  <% end %>
- 
-<%= f.submit "登録する" %>
+  <%= f.submit "登録する" %>
 <% end %>
 
 <div class="links">
-<p><%= link_to "詳細", property_path(@property.id), class: 'link' %></p>
-<p class="vertical-line"></p>
-<p><%= link_to "戻る", property_path(@property.id), class: 'link' %></p>
+  <p><%= link_to "詳細", property_path(@property.id), class: 'link' %></p>
+  <p class="vertical-line"></p>
+  <p><%= link_to "戻る", property_path(@property.id), class: 'link' %></p>
 </div>
