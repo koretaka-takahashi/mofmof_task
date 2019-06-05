@@ -12,7 +12,11 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.create(property_params)
-    redirect_to property_path(@property.id)
+    if @property.save
+      redirect_to property_path(@property.id)
+    else
+      render :new
+    end  
   end
 
   def show
