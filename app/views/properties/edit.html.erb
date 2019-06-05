@@ -1,9 +1,17 @@
 <h1>物件編集</h1>
 
 <%= form_for @property do |f| %>
+  
+  <% if @property.errors.any? %>
+    <ul>
+     <% @property.errors.full_messages.each do |message| %>
+       <li class="error_messages"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <p><%= f.label :物件名 %></p>
   <p><%= f.text_field :name %></p>
-
 
   <p><%= f.label :賃料 %></p>
   <p><%= f.text_field :price %>円</p>
@@ -33,7 +41,7 @@
       <p><%= ns.text_field :walking_minutes %>分</p>
     <% end %>
   <% end %>
-  <%= f.submit "登録する" %>
+  <%= f.submit "編集する" %>
 <% end %>
 
 <div class="links">
