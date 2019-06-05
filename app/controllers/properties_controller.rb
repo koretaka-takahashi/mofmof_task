@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
   def new
     @property = Property.new
     @property.nearest_stations.build
+    @property.nearest_stations.build
   end
 
   def create
